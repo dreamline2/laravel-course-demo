@@ -29,20 +29,18 @@
               {{ $post->title }}
             </h2>
           </a>
-          <p class="post-meta">Posted by
+          <div class="post-meta">Posted by
             <a href="#">{{ $post->user->name }}</a>
             on {{ date('d-m-Y', strtotime($post->created_at)) }}
-            <!-- Authentication Links -->
-              @guest
-              @else
-              <a href="{{ route('post.edit', $post->id) }}">編輯</a>
-              <form method="POST" action="{{ route('post.delete', $post->id) }}">
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
-                  <button type="submit" class="btn btn-outline-danger p-2">刪除</button>
-              </form>
-              @endguest
-          </p>
+            @guest
+            @else
+            <a class="btn" href="{{ route('post.edit', $post->id) }}">編輯</a>
+            <form method="POST" action="{{ route('post.delete', $post->id) }}">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button type="submit" class="btn btn-outline-danger p-2">刪除</button>
+            </form>
+            @endguest
         </div>
         <hr>
         @endforeach
@@ -50,9 +48,4 @@
       </div>
     </div>
   </div>
-
-  <hr>
-
-
-
 @endsection

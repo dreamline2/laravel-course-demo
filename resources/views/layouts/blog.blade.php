@@ -27,6 +27,9 @@
     button {
       display: inline-block;
     }
+    form {
+      display: inline;
+    }
   </style>
 </head>
 
